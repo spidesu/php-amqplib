@@ -32,11 +32,12 @@ class StreamIOTest extends TestCase
     /**
      * @test
      * @group linux
-     * @expectedException \PhpAmqpLib\Exception\AMQPIOWaitException
      * @requires OS Linux
      */
     public function select_must_throw_io_exception()
     {
+        $this->expectException(\PhpAmqpLib\Exception\AMQPIOWaitException::class);
+
         $property = new \ReflectionProperty(StreamIO::class, 'sock');
         $property->setAccessible(true);
 
